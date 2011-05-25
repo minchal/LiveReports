@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<title>relacja</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="style/style.css" type="text/css" />
+	
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="jquery.form.js"></script>
+	<script type="text/javascript" src="live.js"></script>
+	<script type="text/javascript" src="chat.js"></script>
+	<script type="text/javascript" src="post.js"></script>
+</head>
+<body>
+<div id="site">
+	<div id="top">
+		<h1><a href="/"><span>Logo serwisu</span></a></h1>
+		
+		<ul id="menu">
+			<li><a href="index.htm">Trwające relacje</a></li>
+			<li><a href="#">Archiwum</a></li>
+			<li><a href="form.htm">Zarejestruj się</a></li>
+			<li><a href="#">Zaloguj się</a></li>
+		</ul>
+	</div>
+	<div id="body">
+		<div id="content">
+			<div class="live-status">
+				<div id="live-time"></div>
+				<span class="link-more" id="live-refresh">Odśwież teraz</span>
+			</div>
+			<h2>STS-134: drugi dzień misji</h2>
+			
+			<form id="post-form" action="relacja.htm" method="post">
+				<div class="textarea">
+					<label for="post-content">Treść wpisu:</label>
+					<textarea name="content" id="post-content"></textarea>
+				</div>
+				<div id="post-media"></div>
+				<span id="post-media-add" class="link-more" style="float:left;">Dodaj media</span>
+				<div class="submit">
+					<input type="submit" value="Dodaj wpis" />
+				</div>
+			</form>
+			
+			<div class="item">
+				<p>Godzinę temu przeprowadzony został manewr NC3, podczas którego odbyło się 12 sekundowe odpalenie, zmieniające prędkość wahadłowca o 0,85 m/s. Był to kolejny manewr poprawiający ścieżkę podejścia do Stacji ISS.</p>
+				<p class="item-time" data-time="111111">18:40 CEST (17.05.2011)</p>
+			</div>
+			<div class="item">
+				<p>Tymczasem na Ziemi, w porcie kosmicznym z którego wczoraj wystartował przebywający obecnie na orbicie Endeavour, trwa operacja przejazdu wahadłowca Atlantis do hali montażowej VAB. W chwili obecnej przejazd został zatrzymany, aby dać ludziom szansę na wykonanie pamiątkowych zdjęć z maszyną przed jej ostatnim lotem w kosmos (planowanym obecnie na lipiec).</p>
+				
+				<ul class="item-media">
+					<li><a href="#"><img src="1.png" width="150px" /></a></li>
+					<li><a href="#"><img src="2.png" width="150px" /></a></li>
+				</ul>
+				
+				<p class="item-time">18:40 CEST (17.05.2011)</p>
+			</div>
+			<div class="item">
+				<p>Załoga rozłożyła pierścień dokowania, który połączy w dniu jutrzejszym wahadłowiec ze Stacją ISS oraz przygotowane zostały systemy sprężyn i pochłaniaczy drgań, także odgrywających dużą rolę przy operacji dokowania. W porcie cumowniczym umieszczona została kamera, która zapewni podgląd w czasie podchodzenia do węzła PMA-2 na module Harmony Stacji ISS.</p>
+				<p class="item-time">18:40 CEST (17.05.2011)</p>
+			</div>
+		</div>
+		<div id="sidebar">
+			<h2>Czat</h2>
+			
+			<div id="chat">
+				<div class="chat-item">
+					<span class="chat-user">Michał</span>: Ale super relacja!
+				</div>
+				<div class="chat-item">
+					<span class="chat-user chat-admin">Admin</span>: Dzięki, dzięki.
+				</div>
+				<div class="chat-item">
+					<span class="chat-user">Michał</span>: Ale super relacja!
+				</div>
+				<div class="chat-item">
+					<span class="chat-user chat-admin">Admin</span>: Dzięki, dzięki.
+				</div>
+				<div class="chat-item">
+					<span class="chat-user">Michał</span>: Ale super relacja!
+				</div>
+				<div class="chat-item">
+					<span class="chat-user chat-admin">Admin</span>: Dzięki, dzięki.
+				</div>
+				<div class="chat-item">
+					<span class="chat-user">Michał</span>: Ale super relacja!
+				</div>
+				<div class="chat-item">
+					<span class="chat-user chat-admin">Admin</span>: Dzięki, dzięki.
+				</div>
+				<div class="chat-item">
+					<span class="chat-user">Michał</span>: Ale super relacja!
+				</div>
+				<div class="chat-item">
+					<span class="chat-user chat-admin">Admin</span>: Dzięki, dzięki.
+				</div>
+			</div>
+			
+			<form>
+				<div class="input">
+					<input type="text" />
+				</div>
+				<div class="submit">
+					<input type="submit" value="Wyślij" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="foot">
+		<p>© NazwaStrony.pl</p>
+	</div>
+</div>
+</body>
+</html>
