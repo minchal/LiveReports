@@ -11,18 +11,36 @@
   </head>
 <body>
 <div id="site">
+
+
 	<div id="top">
 		<h1><a href="/"><span>Logo serwisu</span></a></h1>
 		
 		<ul id="menu">
 			<li><a href="/reports">Trwające relacje</a></li>
 			<li><a href="/archve">Archiwum</a></li>
-			<li><a href="/users/new">Zarejestruj się</a></li>
-			<li><a href="/login">Zaloguj się</a></li>
+
+			
+			<% if current_user %>
+			<li><a href="/admin">Panel administratora</a></li>
+			<li><%= link_to "Wyloguj", log_out_path %></li>
+			<% else %>
+			<li><%= link_to "Zarejestruj się", sign_up_path %></li>
+			<li><%= link_to "Zaloguj się", log_in_path %></li>
+			<% end %>
+			
 		</ul>
 	</div>
 	<div id="body">
-		<%= yield %>
+	
+	<% flash.each do |name, msg| %>
+	<%= content_tag :div, msg, :id => "flash_#{name}" %>
+	<% end %>
+			<% if current_user %>
+			Witaj <%= current_user.email %>!
+			<% end %>
+			
+			<%= yield %>
 	</div>
 	<div id="foot">
 		<p>© NazwaStrony.pl</p>

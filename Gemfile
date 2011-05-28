@@ -8,6 +8,7 @@ gem 'rails', '3.0.7'
 gem 'sqlite3'
 gem 'devise' # Devise must be required before RailsAdmin
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 
 # Use unicorn as the web server

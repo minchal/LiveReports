@@ -1,4 +1,6 @@
 Livereports::Application.routes.draw do
+  get "sessions/new"
+
   devise_for :users
 
   resources :chat_entries
@@ -65,10 +67,16 @@ Livereports::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  root :to => "reports#index"
-  match '/archives' => "reports#archives", :as => "archives" 
-  match '/login' => "sessions#new", :as => "login" 
-  match '/logout' => "sessions#destroy", :as => "logout" 
-  match ':controller(/:action(/:id(.:format)))' 
+get "log_out" => "sessions#destroy", :as => "log_out"
+get "log_in" => "sessions#new", :as => "log_in"
+get "sign_up" => "users#new", :as => "sign_up"
+root :to => "reports#index"
+resources :users
+resources :sessions
+
+match '/archives' => "reports#archives", :as => "archives" 
+match '/login' => "sessions#new", :as => "login" 
+match '/logout' => "sessions#destroy", :as => "logout" 
+match ':controller(/:action(/:id(.:format)))' 
   
 end
