@@ -1,23 +1,25 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @reports.each do |report| %>
-  <tr>
-    <td><%= report.title %></td>
-    <td><%= report.description %></td>
-    <td><%= link_to 'Show', report %></td>
-    <td><%= link_to 'Edit', edit_report_path(report) %></td>
-    <td><%= link_to 'Destroy', report, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div id="content">
+	<h2>Trwające relacje</h2>
 
-<br />
+	<% @reports.each do |report| %>		
+		<div class="item">
+			<h3><%= report.title %></h3>
+			<p><%= report.description %></p>
+			<p class="item-time"></p>
+			<%= link_to 'Zobacz', report, {:class=>'link-more'} %>
+		</div>
+	<% end %>
+</div>
 
-<%= link_to 'New Report', new_report_path %>
+<div id="sidebar">
+	<h2>Witaj!</h2>
+	<p>Witaj w portalu relacji Live!</p>
+	
+	<% if current_user %>
+	
+	<% else %>
+		<%= link_to "Zarejestruj się", sign_up_path, {:class=>"link-more"} %><br /><br />
+		<%= link_to "Zaloguj się", log_in_path, {:class=>"link-more"} %>
+	<% end %>
+</div>

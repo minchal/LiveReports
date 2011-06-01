@@ -1,15 +1,68 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @report.title %>
-</p>
+<div id="content">
+	<div class="live-status">
+		<div id="live-time"></div>
+		<span class="link-more" id="live-refresh" data-id="<%= @report.id %>">Odśwież teraz</span>
+	</div>
+	
+	<h2><%= @report.title %></h2>
+	
+	<% if current_user %>
+	<form id="post-form" action="/entry/add/<%= @report.id %>.xml" method="post">
+		<div class="textarea">
+			<label for="post-content">Treść wpisu:</label>
+			<textarea name="content" id="post-content"></textarea>
+		</div>
+		<div id="post-media"></div>
+		<span id="post-media-add" class="link-more" style="float:left;">Dodaj media</span>
+		<div class="submit">
+			<input type="submit" value="Dodaj wpis" />
+		</div>
+	</form>
+	<% end %>
+	
+	<% @report.entry.find(:all,:order => "date DESC").each do |entry| %>
+		<div class="item" data-time="<%= entry.date.strftime("%s") %>">
+			<p><%= entry.content %></p>
+			
+			<% if entry.medium.exists? %>	
+				<ul class="item-media">
+					<% entry.medium.each do |medium| %>
+						<% if medium.mtype==1 %>
+							<li><a href="<%= medium.data %>"><img src="<%= medium.data %>" width="150px" /></a></li>
+						<% elsif medium.mtype==2 %>
+							<li><a href="http://www.youtube.com/watch?v=<%= medium.data %>"><img src="http://i3.ytimg.com/vi/<%= medium.data %>/default.jpg" /></a></li>
+						<% end %>
+					<% end %>
+				</ul>
+			<% end %>
+			
+			<p class="item-time"><%= entry.date.strftime("%H:%M (%d.%m.%Y)") %></p>
+		</div>
+	<% end %>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%= @report.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+<div id="sidebar">
+	<% if current_user %>
+	<h2>Czat</h2>
+	
+	<div id="chat">
+		<% @report.chat_entry.find(:all,:order => "date ASC").each do |chat| %>
+			<div class="chat-item" data-id="<%= chat.id %>">
+				<span class="chat-user"><%= chat.user.email %></span>: <%= chat.content %>
+			</div>
+		<% end %>
+	</div>
+	
+	<form id="chat-form" action="/chat/add/<%= @report.id %>.xml" method="post">
+		<div class="input">
+			<input type="text" name="content" id="chat-content" />
+		</div>
+		<div class="submit">
+			<input type="submit" value="Wyślij" />
+		</div>
+	</form>
+	
+	<% end %>
+</div>

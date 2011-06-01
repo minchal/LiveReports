@@ -74,9 +74,18 @@ root :to => "reports#index"
 resources :users
 resources :sessions
 
-match '/archives' => "reports#archives", :as => "archives" 
 match '/login' => "sessions#new", :as => "login" 
 match '/logout' => "sessions#destroy", :as => "logout" 
-match ':controller(/:action(/:id(.:format)))' 
+
+match '/archives' => "reports#archives", :as => "archives" 
+match '/report/:id' => "reports#show", :as => "report" 
+match '/entry/add/:report_id' => "entries#create", :as => "entry_add" 
+match '/entry/:report_id/:from' => "entries#report", :as => "entries" 
+match '/medium/:entry_id' => "entries#medium", :as => "medium" 
+
+match '/chat/add/:report_id' => "chat_entries#create", :as => "chat_add" 
+match '/chat/:report_id/:from' => "chat_entries#report", :as => "chat" 
+
+#match ':controller(/:action(/:id(.:format)))' 
   
 end

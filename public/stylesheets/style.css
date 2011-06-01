@@ -133,7 +133,7 @@ h3 {
 }
 
 #chat {
-	height: 200px; overflow: auto;
+	height: 300px; overflow: auto;
 	border: solid 1px #ccc; border-bottom: none;
 }
 .chat-item {
